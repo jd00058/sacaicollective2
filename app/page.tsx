@@ -44,7 +44,7 @@ export default function App() {
         <div className="absolute bottom-[-20%] right-[-10%] w-[60vw] h-[60vw] rounded-full bg-neutral-800/20 blur-[120px] pointer-events-none mix-blend-screen z-10" />
 
         {/* Navigation */}
-        <nav className="relative z-10 flex items-center justify-between px-6 py-6 max-w-7xl mx-auto w-full">
+        <nav className="relative z-10 flex items-center justify-between px-6 pt-4 pb-0 sm:py-6 max-w-7xl mx-auto w-full">
           <div className="flex items-center gap-3">
             <span className="font-semibold tracking-tight text-lg">AI Collective <span className="text-white/50 font-normal">Sacramento</span></span>
           </div>
@@ -58,14 +58,14 @@ export default function App() {
         <motion.main
           ref={heroRef as any}
           style={{ opacity: heroOpacity, y: heroY }}
-          className="flex-1 flex flex-col items-center justify-center relative z-10 px-6 py-20 w-full max-w-4xl mx-auto text-center min-h-[80vh]"
+          className="relative z-10 px-6 pb-12 w-full max-w-4xl mx-auto text-center -mt-8 sm:mt-0 sm:pt-0 sm:pb-20 sm:flex-1 sm:flex sm:flex-col sm:items-center sm:justify-center sm:min-h-[80vh]"
         >
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-white/80 mb-8 backdrop-blur-sm"
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs sm:text-sm font-medium text-white/80 mb-2 sm:mb-8 backdrop-blur-sm"
           >
             <Sparkles className="w-4 h-4 text-white/60" />
             <span>Sacramento and Surrounding Areas</span>
@@ -75,7 +75,7 @@ export default function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-[1.1]"
+            className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight mb-2 sm:mb-6 leading-[1.1]"
           >
             Shape the future of AI <br className="hidden md:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/40">
@@ -87,7 +87,7 @@ export default function App() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-lg md:text-xl text-white/60 mb-12 max-w-2xl mx-auto leading-relaxed"
+            className="text-base sm:text-lg md:text-xl text-white/60 mb-4 sm:mb-12 max-w-2xl mx-auto leading-relaxed"
           >
             Join a community of builders, researchers, and enthusiasts. We are democratizing AI knowledge, fostering collaboration, and building a thriving local ecosystem for innovation.
           </motion.p>
