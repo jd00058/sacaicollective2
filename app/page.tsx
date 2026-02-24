@@ -22,7 +22,7 @@ export default function App() {
 
   return (
     <main className="bg-[#050505] text-white overflow-x-hidden flex flex-col min-h-screen w-full">
-      <div className="min-h-screen relative flex flex-col overflow-hidden w-full">
+      <div className="min-h-0 sm:min-h-screen relative flex flex-col overflow-hidden w-full">
         {/* Mux Video Background */}
         <motion.div
           className="absolute inset-0 z-0 overflow-hidden pointer-events-none"
