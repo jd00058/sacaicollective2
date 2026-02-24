@@ -58,7 +58,7 @@ export default function App() {
         <motion.main
           ref={heroRef as any}
           style={{ opacity: heroOpacity, y: heroY }}
-          className="relative z-10 px-6 pt-0 pb-12 w-full max-w-4xl mx-auto text-center sm:pb-20 sm:flex-1 sm:flex sm:flex-col sm:items-center sm:justify-center sm:min-h-[80vh]"
+          className="relative z-10 px-6 pt-10 pb-12 w-full max-w-4xl mx-auto text-center sm:pt-0 sm:pb-20 sm:flex-1 sm:flex sm:flex-col sm:items-center sm:justify-center sm:min-h-[80vh]"
         >
 
           <motion.div
