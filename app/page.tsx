@@ -22,7 +22,7 @@ export default function App() {
 
   return (
     <main className="bg-[#050505] text-white overflow-x-hidden flex flex-col min-h-screen w-full">
-      <div className="min-h-0 sm:min-h-screen relative flex flex-col overflow-hidden w-full">
+      <div className="relative flex flex-col overflow-hidden w-full">
         {/* Mux Video Background */}
         <motion.div
           className="absolute inset-0 z-0 overflow-hidden pointer-events-none"
@@ -35,7 +35,7 @@ export default function App() {
             loop
             muted
             playsInline
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 0%' }}
           />
         </motion.div>
 
@@ -58,7 +58,7 @@ export default function App() {
         <motion.main
           ref={heroRef as any}
           style={{ opacity: heroOpacity, y: heroY }}
-          className="relative z-10 px-6 pt-20 pb-12 w-full max-w-4xl mx-auto text-center sm:pt-0 sm:pb-20 sm:flex-1 sm:flex sm:flex-col sm:items-center sm:justify-center sm:min-h-[80vh]"
+          className="relative z-10 px-6 pt-20 pb-12 w-full max-w-4xl mx-auto text-center sm:pt-32 sm:pb-32"
         >
 
           <motion.div
