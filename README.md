@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# sacaicollective.com
 
-## Getting Started
-
-First, run the development server:
+The homepage for AI Collective Sacramento. Next.js 16 + Tailwind 4 + Motion + Lenis, hosted on Netlify.
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Editing
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Copy:** every word on the page lives in `app/content.ts`.
+- **Events:** pulled from the Luma calendar (luma.com/sacaic) and refreshed every 30 minutes. Post an event on Luma and it appears on the site. With nothing upcoming, the section shows a "next one is being planned" card.
+- **Photos:** event photos live in `public/photos/` (web-sized JPGs, about 1800px on the long edge, 2560px for `room.jpg`). Each one is listed in `photos` in `app/content.ts` with its alt text, the event it came from (shown as a caption), whether it's wide (`3/2`) or tall (`2/3`), and an optional crop anchor. To swap a photo, replace the file under the same name. If a file goes missing, a labeled placeholder shows in its spot.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+  | File | Where it shows |
+  | --- | --- |
+  | `room.jpg` | The full-bleed "Every dot is a person" reveal after the scroll story |
+  | `workshop.jpg`, `meetup.jpg`, `talk.jpg`, `build.jpg` | What we do: hover previews (desktop) and inline photos (mobile) |
+  | `laughing.jpg`, `conversation.jpg`, `smiles.jpg`, `building.jpg`, `pair.jpg`, `notes.jpg`, `table.jpg`, `contacts.jpg`, `applause.jpg`, `laptops.jpg`, `audience.jpg`, `focus.jpg` | Inside the room: the masonry wall, in the order set by `gallery.shots` |
 
-## Learn More
+- **Partner logos:** drop logo files (SVG or transparent PNG) into `public/partners/`. They're shown as white silhouettes, so anything that isn't transparent shows up as solid white: knock the background out first. Each logo is sized by its aspect ratio so square marks and long wordmarks carry similar weight, and "Open seat" cells top up the last row of the wall. The file name becomes the alt text (`city-of-rancho-cordova.png` → "City of Rancho Cordova").
+- **Sac Tech Week card:** the "Official Managing Partner of Sac Tech Week" card next to the partners heading. Copy is in `partners.managing` in `app/content.ts`; the logo is `public/brand/stw-rabbit.png` + `stw-letters.png` (split from STW's official white stack logo so the rabbit can hop on hover).
 
-To learn more about Next.js, take a look at the following resources:
+`scripts/assets.mjs` runs before `dev` and `build` and records which photos and logos exist.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Design context
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`PRODUCT.md` holds the audience, voice and design principles. The brand source of truth is `../AIC/ai_collective_sacramento_brand_context.md`.

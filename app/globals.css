@@ -1,26 +1,419 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* AIC Sacramento palette (from the brand's video identity), expressed in OKLCH. */
+@theme {
+  --color-ink: oklch(0.127 0.015 293);
+  --color-ink-2: oklch(0.165 0.024 286);
+  --color-navy: oklch(0.207 0.055 277);
+  --color-blue: oklch(0.465 0.258 267.4);
+  --color-blue-deep: oklch(0.36 0.2 268);
+  --color-blue-hi: oklch(0.74 0.14 273);
+  --color-orange: oklch(0.702 0.196 40.7);
+  --color-ember: oklch(0.592 0.203 32);
+  --color-cream: oklch(0.956 0.014 84.6);
+  --color-cream-2: oklch(0.82 0.014 84.6);
+  --color-cream-3: oklch(0.66 0.014 84.6);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+
+  --breakpoint-xs: 30rem;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-boldonse), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-marker: var(--font-permanent-marker), "Comic Sans MS", cursive;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  /* Semantic z-index scale */
+  --z-raised: 10;
+  --z-nav: 40;
+  --z-grain: 45;
+  --z-backdrop: 50;
+  --z-modal: 60;
+
+  --gutter: clamp(1rem, 4vw, 3rem);
+  color-scheme: dark;
+}
+
+html {
+  /* Positioned so Motion can measure scroll offsets against the page. */
+  position: relative;
+  background: var(--color-ink);
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-ink);
+  color: var(--color-cream);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+::selection {
+  background: var(--color-orange);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-orange);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.px-gutter {
+  padding-inline: var(--gutter);
+}
+
+/* Display type: Boldonse, a heavy wide block face, always set in capitals.
+   Its capitals stand 1.19em tall, so lines need ~1.34 leading to clear each other.
+   Layered so tracking-* and leading-* utilities can still tune it per element.
+   Boldonse ships one (already black) weight, so never fake-bold it. */
+@layer components {
+  .font-display {
+    font-synthesis: none;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    line-height: 1.34;
+  }
+}
+
+/* Film grain over everything except dialogs. Static, so it costs nothing per frame. */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-grain);
+  pointer-events: none;
+  opacity: 0.07;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+[data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* Hero entrance: each line rises out of its own mask. */
+.hero-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.1em;
+  margin-bottom: -0.1em;
+}
+.hero-line > span {
+  display: inline-block;
+  animation: rise 1.25s var(--ease-out-expo) both;
+  animation-delay: calc(var(--i, 0) * 90ms + 200ms);
+}
+.fade-in {
+  animation: fade-up 1.2s var(--ease-out-expo) both;
+  animation-delay: var(--d, 0ms);
+}
+@keyframes rise {
+  from {
+    transform: translateY(108%);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Scroll reveals. Content is visible by default; only hidden once JS is confirmed. */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.9s var(--ease-out-expo),
+    transform 1.2s var(--ease-out-expo);
+  transition-delay: var(--d, 0ms);
+}
+.js [data-reveal="clip"] {
+  opacity: 1;
+  transform: scale(1.06);
+  clip-path: inset(14% 10% 14% 10% round var(--r, 20px));
+  transition:
+    clip-path 1.5s var(--ease-out-expo),
+    transform 1.8s var(--ease-out-expo);
+  transition-delay: var(--d, 0ms);
+}
+.js [data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+.js [data-reveal="clip"].is-in {
+  clip-path: inset(0 0 0 0 round var(--r, 20px));
+}
+
+/* Marquee */
+.marquee-track {
+  animation: marquee 60s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* "Your seat" pulse */
+@keyframes seat-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+.seat-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: seat-pulse 2.4s var(--ease-out-quart) infinite;
+}
+/* Seat ring on the "being planned" card. Hovering the card makes room in the
+   circle, runs a wave of arrivals clockwise from the open seat, and when the wave
+   gets back around, the open seat grows and starts to glow. */
+.seat-ring .seat,
+.seat-ring .seat-ping {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.seat-ring .seat {
+  transition:
+    translate 0.9s var(--ease-out-expo),
+    scale 0.6s var(--ease-out-expo);
+}
+.seat-ring .seat-ping {
+  opacity: 0;
+}
+/* Chairs rest slightly dimmed so an arrival can brighten them. (Animating fill
+   from currentColor interpolates through black in Chromium, so use fill-opacity.) */
+.seat-ring .seat-chair {
+  fill-opacity: 0.85;
+}
+@keyframes seat-arrive {
+  0%,
+  100% {
+    scale: 1;
+  }
+  22% {
+    scale: 1.32;
+    fill-opacity: 1;
+  }
+}
+@keyframes seat-ping {
+  0% {
+    scale: 1;
+    opacity: 0.8;
+  }
+  70%,
+  100% {
+    scale: 2.6;
+    opacity: 0;
+  }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .seat-host:hover .seat-ring .seat {
+    translate: var(--dx) var(--dy);
+  }
+  .seat-host:hover .seat-ring .seat-chair {
+    animation: seat-arrive 0.8s var(--ease-out-quart) calc((var(--i) - 1) * 70ms) both;
+  }
+  .seat-host:hover .seat-ring .seat-open {
+    scale: 1.25;
+    transition-delay: 0s, 0.55s;
+  }
+  .seat-host:hover .seat-ring .seat-ping {
+    animation: seat-ping 2.2s var(--ease-out-quart) 0.6s infinite;
+  }
+}
+@media (hover: hover) and (prefers-reduced-motion: reduce) {
+  .seat-host:hover .seat-ring .seat-chair {
+    fill-opacity: 1;
+  }
+}
+
+/* Sac Tech Week managing-partner card, in STW's own tokens (from sactechweek.org):
+   void background, electric/signal violet halo behind the white rabbit. On hover the
+   halo swells and the rabbit makes one hop. */
+.stw-card {
+  --stw-void: #0b0b14;
+  --stw-electric: #6f1dff;
+  --stw-signal: #4a0fae;
+  background: var(--stw-void);
+}
+.stw-halo {
+  background: radial-gradient(
+    closest-side,
+    color-mix(in oklab, var(--stw-electric) 55%, transparent),
+    color-mix(in oklab, var(--stw-signal) 28%, transparent) 50%,
+    transparent
+  );
+  opacity: 0.75;
+  transition:
+    opacity 0.8s var(--ease-out-expo),
+    scale 1.2s var(--ease-out-expo);
+}
+.stw-card:hover .stw-halo,
+.stw-card:focus-visible .stw-halo {
+  opacity: 1;
+  scale: 1.08;
+}
+.stw-rabbit {
+  transform-origin: 35% 70%;
+}
+@keyframes stw-hop {
+  0%,
+  100% {
+    translate: 0 0;
+    rotate: 0deg;
+  }
+  38% {
+    translate: 5% -11%;
+    rotate: -5deg;
+  }
+  72% {
+    translate: 2% 0;
+    rotate: 1deg;
+  }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .stw-card:hover .stw-rabbit {
+    animation: stw-hop 0.85s var(--ease-out-quart) both;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .stw-card:focus-visible .stw-rabbit {
+    animation: stw-hop 0.85s var(--ease-out-quart) both;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stw-halo {
+    transition: none;
+  }
+}
+
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spin-slow {
+  transform-box: view-box;
+  transform-origin: center;
+  animation: spin-slow 120s linear infinite;
+}
+
+/* Link underline that draws in from the left */
+.link-draw {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.6s var(--ease-out-expo);
+}
+.link-draw:hover,
+.link-draw:focus-visible {
+  background-size: 100% 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .hero-line > span,
+  .fade-in,
+  .marquee-track,
+  .seat-pulse,
+  .spin-slow {
+    animation: none !important;
+  }
+  .js [data-reveal],
+  .js [data-reveal="clip"] {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+    transition: none;
+  }
+  /* The room photo shows finished and unpinned. */
+  .room-reveal {
+    height: auto;
+  }
+  .room-reveal-pin {
+    position: relative;
+  }
+  .room-reveal-frame {
+    clip-path: none !important;
+    transform: none !important;
+  }
+  .room-reveal-text {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Join dialog */
+.join-dialog[open] {
+  animation: dialog-in 0.7s var(--ease-out-expo) both;
+}
+.join-dialog[open]::backdrop {
+  animation: backdrop-in 0.5s ease-out both;
+}
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes backdrop-in {
+  from {
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .join-dialog[open],
+  .join-dialog[open]::backdrop {
+    animation: none;
+  }
 }
