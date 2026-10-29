@@ -73,7 +73,7 @@ export default function NameTags() {
                 className="w-[calc(50%-0.4rem)] max-w-[264px] cursor-grab touch-pan-y select-none overflow-hidden rounded-[14px] bg-cream text-ink shadow-[0_24px_50px_-20px_rgb(0_0_0/0.55),0_2px_0_rgb(0_0_0/0.08)] sm:w-[264px] sm:rounded-[18px]"
               >
                 <div className={`${tone.band} px-3.5 pb-2 pt-3 sm:px-5 sm:pb-2.5 sm:pt-3.5`}>
-                  <p className={`font-display text-[1.5rem] font-extrabold leading-none sm:text-[2.1rem] tracking-[-0.02em] ${tone.hello}`}>HELLO</p>
+                  <p className={`font-display text-[1.6rem] leading-none tracking-[0.02em] sm:text-[2.3rem] ${tone.hello}`}>HELLO</p>
                   <p className={`mt-0.5 text-[0.62rem] font-semibold uppercase tracking-[0.14em] sm:text-[0.7rem] ${tone.hello} opacity-80`}>I&apos;m</p>
                 </div>
                 <div className="px-3.5 pb-3 pt-2.5 sm:px-5 sm:pb-4 sm:pt-3">

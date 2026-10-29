@@ -157,7 +157,7 @@ function PastRow({ event, delay = 0, upcoming = false }: { event: LumaEvent; del
             {d.month} {d.day}
             {!upcoming && `, ${new Date(event.startAt).getFullYear()}`}
           </p>
-          <p className="font-display mt-1 text-[1.35rem] font-semibold leading-tight tracking-[-0.02em]">{event.name}</p>
+          <p className="font-display mt-1 text-[1.4rem] leading-[1.05] tracking-[0.02em]">{event.name}</p>
           <p className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-cream-3">
             {event.place && (
               <span className="inline-flex items-center gap-1.5">

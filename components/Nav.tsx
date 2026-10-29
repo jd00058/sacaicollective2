@@ -36,7 +36,7 @@ export default function Nav() {
         >
           <a href="#top" className="flex items-center gap-2.5" aria-label="AI Collective Sacramento, back to top">
             <SeatMark className="size-7 text-cream" />
-            <span className="font-display text-[1.05rem] font-semibold leading-none tracking-[-0.02em]">
+            <span className="font-display text-[1.15rem] leading-none tracking-[0.03em]">
               AI Collective <span className="text-cream/65">Sacramento</span>
             </span>
           </a>

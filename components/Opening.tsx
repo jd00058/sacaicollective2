@@ -39,7 +39,7 @@ function Hero() {
   return (
     <section ref={ref} id="top" className="relative flex h-svh min-h-[640px] flex-col justify-end px-gutter pb-8 pt-28 md:pb-10">
       <motion.div style={{ y, opacity }} className="mx-auto w-full max-w-[1400px]">
-        <h1 className="font-display text-[clamp(3.1rem,9.4vw,6rem)] font-bold">
+        <h1 className="font-display text-[clamp(2.4rem,12.2vw,6rem)] font-bold">
           {hero.lines.map((line, i) => (
             <span key={line} className="hero-line">
               <span style={{ "--i": i } as React.CSSProperties} className={i === hero.lines.length - 1 ? "text-orange" : undefined}>
@@ -93,7 +93,7 @@ function Intro() {
   return (
     <section id="why" className="relative px-gutter pb-[18vh] pt-[22vh]">
       <div className="mx-auto max-w-[1400px]">
-        <p ref={ref} className="font-display max-w-[22ch] text-[clamp(2rem,4.6vw,3.9rem)] font-semibold leading-[1.08] tracking-[-0.03em]">
+        <p ref={ref} className="font-display max-w-[22ch] text-[clamp(2rem,4.6vw,3.9rem)] leading-[1.04]">
           {words.map((word, i) =>
             reduce ? (
               <span key={i}>{word} </span>
@@ -104,7 +104,7 @@ function Intro() {
             ),
           )}
         </p>
-        <p data-reveal className="font-display mt-10 text-[clamp(2rem,4.6vw,3.9rem)] font-semibold leading-[1.08] tracking-[-0.03em] text-orange">
+        <p data-reveal className="font-display mt-10 text-[clamp(2rem,4.6vw,3.9rem)] leading-[1.04] text-orange">
           {story.turn}
         </p>
       </div>
@@ -207,7 +207,7 @@ function Step({
           className="absolute left-[-0.08em] right-[-0.08em] top-[54%] h-[0.09em] origin-left rounded-full bg-orange"
         />
       </motion.p>
-      <p className="font-display overflow-hidden pb-[0.08em] text-[clamp(3.4rem,10vw,6rem)] font-bold">
+      <p className="font-display overflow-hidden pb-[0.08em] text-[clamp(2.4rem,13.5vw,6rem)] font-bold">
         <motion.span style={{ y: reveal }} className="inline-block">
           {step.to}
         </motion.span>

@@ -5,7 +5,7 @@ export default function Marquee() {
     <ul className="flex shrink-0 items-center" aria-hidden={hidden || undefined}>
       {topics.map((t) => (
         <li key={t} className="flex items-center whitespace-nowrap">
-          <span className="font-display px-6 text-[clamp(1.5rem,3vw,2.4rem)] font-semibold tracking-[-0.025em]">{t}</span>
+          <span className="font-display px-6 text-[clamp(1.5rem,3vw,2.4rem)] tracking-[0.02em]">{t}</span>
           <span aria-hidden className="size-2.5 rounded-full bg-orange" />
         </li>
       ))}

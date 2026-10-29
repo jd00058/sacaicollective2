@@ -73,8 +73,7 @@ export default function Footer() {
 
       <p
         aria-hidden
-        className="font-display pointer-events-none mx-auto -mb-[0.2em] max-w-[1400px] select-none text-center text-[clamp(4rem,17.5vw,16rem)] font-extrabold leading-[0.8] text-cream/[0.06]"
-        style={{ fontVariationSettings: '"opsz" 96, "wdth" 75', letterSpacing: "-0.04em" }}
+        className="font-display pointer-events-none mx-auto -mb-[0.08em] max-w-[1400px] select-none text-center text-[clamp(4rem,17.5vw,16rem)] leading-[0.8] text-cream/[0.06]"
       >
         Sacramento
       </p>
