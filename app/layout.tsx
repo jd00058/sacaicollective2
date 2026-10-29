@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -42,6 +43,13 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        {/* GoHighLevel visitor tracking, carried over from the live site's last manual deploy. */}
+        <Script
+          id="ghl-external-tracking"
+          src="https://link.msgsndr.com/js/external-tracking.js"
+          strategy="afterInteractive"
+          data-tracking-id="tk_75b9bc7b69534cbd9eecd93d444113e6"
+        />
       </body>
     </html>
   );
