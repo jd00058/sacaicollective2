@@ -1,10 +1,10 @@
-import { gallery } from "@/app/content";
+import { gallery, photoEvents, photos as photoData } from "@/app/content";
 import Photo, { type ResolvedPhoto } from "./Photo";
 
+// A masonry wall of candid moments from past events. Tall and wide frames keep the
+// photos' own shapes, and each one is captioned with the event it came from
+// (on hover where there's a mouse; small phones rely on the footnote).
 export default function Gallery({ photos }: { photos: Record<string, ResolvedPhoto> }) {
-  const [room, conversation, laughing, group] = gallery.shots.map((k) => photos[k]);
-  const r = { "--r": "24px" } as React.CSSProperties;
-
   return (
     <section aria-labelledby="gallery-title" className="relative bg-ink px-gutter pb-[clamp(6rem,14vw,11rem)]">
       <div className="mx-auto max-w-[1400px]">
@@ -17,20 +17,36 @@ export default function Gallery({ photos }: { photos: Record<string, ResolvedPho
           </p>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-4 md:mt-20 md:grid-cols-12 md:gap-5">
-          <div data-reveal="clip" style={r} className="md:col-span-7 md:row-span-2">
-            <Photo photo={room} className="aspect-[4/5] h-full w-full rounded-[24px] md:aspect-auto md:min-h-[640px]" sizes="(min-width: 768px) 58vw, 100vw" />
-          </div>
-          <div data-reveal="clip" style={{ ...r, "--d": "120ms" } as React.CSSProperties} className="md:col-span-5">
-            <Photo photo={conversation} className="aspect-[4/3] w-full rounded-[24px]" sizes="(min-width: 768px) 42vw, 100vw" />
-          </div>
-          <div data-reveal="clip" style={{ ...r, "--d": "220ms" } as React.CSSProperties} className="md:col-span-5">
-            <Photo photo={laughing} className="aspect-[4/3] w-full rounded-[24px]" sizes="(min-width: 768px) 42vw, 100vw" />
-          </div>
-          <div data-reveal="clip" style={r} className="md:col-span-12">
-            <Photo photo={group} className="aspect-[4/3] w-full rounded-[24px] md:aspect-[21/8]" sizes="100vw" />
-          </div>
-        </div>
+        <ul className="mt-14 columns-2 gap-3 sm:gap-4 md:mt-20 lg:columns-3 lg:gap-5">
+          {gallery.shots.map((key, i) => {
+            const data = photoData[key];
+            return (
+              <li
+                key={key}
+                data-reveal="clip"
+                style={{ "--r": "20px", "--d": `${(i % 4) * 90}ms` } as React.CSSProperties}
+                className="mb-3 break-inside-avoid sm:mb-4 lg:mb-5"
+              >
+                <figure className="group relative">
+                  <Photo
+                    photo={photos[key]}
+                    sizes="(min-width: 1024px) 30vw, 50vw"
+                    className={`w-full rounded-[20px] [&_img]:transition-transform [&_img]:duration-[1.2s] [&_img]:ease-out-expo group-hover:[&_img]:scale-[1.04] ${
+                      data.ratio === "2/3" ? "aspect-[2/3]" : "aspect-[3/2]"
+                    }`}
+                  />
+                  <figcaption className="pointer-events-none absolute bottom-3.5 left-3.5 hidden whitespace-nowrap rounded-full bg-ink/75 px-3 py-1 text-xs font-medium text-cream transition-[opacity,translate] duration-500 ease-out-expo sm:block [@media(hover:hover)]:translate-y-1 [@media(hover:hover)]:opacity-0 [@media(hover:hover)]:group-hover:translate-y-0 [@media(hover:hover)]:group-hover:opacity-100">
+                    {photoEvents[data.event]}
+                  </figcaption>
+                </figure>
+              </li>
+            );
+          })}
+        </ul>
+
+        <p data-reveal className="mt-6 text-sm text-cream-3 md:mt-8">
+          {gallery.footnote}
+        </p>
       </div>
     </section>
   );

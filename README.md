@@ -11,18 +11,13 @@ npm run dev
 
 - **Copy:** every word on the page lives in `app/content.ts`.
 - **Events:** pulled from the Luma calendar (luma.com/sacaic) and refreshed every 30 minutes. Post an event on Luma and it appears on the site. With nothing upcoming, the section shows a "next one is being planned" card.
-- **Photos:** drop JPGs into `public/photos/` using these names, then rebuild. Until a file exists, a labeled placeholder shows in its spot.
+- **Photos:** event photos live in `public/photos/` (web-sized JPGs, about 1800px on the long edge, 2560px for `room.jpg`). Each one is listed in `photos` in `app/content.ts` with its alt text, the event it came from (shown as a caption), whether it's wide (`3/2`) or tall (`2/3`), and an optional crop anchor. To swap a photo, replace the file under the same name. If a file goes missing, a labeled placeholder shows in its spot.
 
-  | File | Where it shows | Ideal shot |
-  | --- | --- | --- |
-  | `workshop.jpg` | What we do: Workshops | Hands on laptops, mid-workshop |
-  | `meetup.jpg` | What we do: Builder meetups | A builder demoing to the room |
-  | `talk.jpg` | What we do: Talks & panels | Speaker at the front, full room |
-  | `build.jpg` | What we do: Build days | Small group building at a table |
-  | `room.jpg` | Inside the room (large) | Wide shot of a packed room |
-  | `conversation.jpg` | Inside the room | Two people mid-conversation |
-  | `laughing.jpg` | Inside the room | Candid laugh during a session |
-  | `group.jpg` | Inside the room (wide) | Group photo at the end of the night |
+  | File | Where it shows |
+  | --- | --- |
+  | `room.jpg` | The full-bleed "Every dot is a person" reveal after the scroll story |
+  | `workshop.jpg`, `meetup.jpg`, `talk.jpg`, `build.jpg` | What we do: hover previews (desktop) and inline photos (mobile) |
+  | `laughing.jpg`, `conversation.jpg`, `smiles.jpg`, `building.jpg`, `pair.jpg`, `notes.jpg`, `table.jpg`, `contacts.jpg`, `applause.jpg`, `laptops.jpg`, `audience.jpg`, `focus.jpg` | Inside the room: the masonry wall, in the order set by `gallery.shots` |
 
 - **Partner logos:** drop logo files (SVG or transparent PNG) into `public/partners/`. They're shown as white silhouettes; the file name becomes the alt text (`city-of-sacramento.svg` → "city of sacramento").
 

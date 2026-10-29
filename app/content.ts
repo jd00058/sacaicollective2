@@ -111,25 +111,63 @@ export const events = {
   pastLabel: "Recently in the room",
 };
 
-// Drop real photos into /public/photos using these file names and they replace
-// the placeholders automatically on the next build. Ideal size: 2400px wide JPG.
-export const photos = {
-  workshop: { file: "workshop.jpg", alt: "Attendees working on laptops during a hands-on AI workshop", shot: "Hands on laptops, mid-workshop" },
-  meetup: { file: "meetup.jpg", alt: "A local builder demoing a project to a room of attendees", shot: "Builder demoing to the room" },
-  talk: { file: "talk.jpg", alt: "A speaker presenting to a full room in Sacramento", shot: "Speaker at the front, full room" },
-  build: { file: "build.jpg", alt: "A small group building together around a table", shot: "Small group building at a table" },
-  room: { file: "room.jpg", alt: "A full room at an AI Collective Sacramento event", shot: "Wide shot of a packed room" },
-  conversation: { file: "conversation.jpg", alt: "Two attendees in conversation after a talk", shot: "Two people mid-conversation" },
-  group: { file: "group.jpg", alt: "Group photo of AI Collective Sacramento members", shot: "Group photo at the end of the night" },
-  laughing: { file: "laughing.jpg", alt: "Attendees laughing during a session", shot: "Candid laugh during a session" },
+// Where each photo was taken (all 2026). Shown as a small caption so it's clear these are our events.
+export const photoEvents = {
+  kickoff: "Kickoff · Mar 15",
+  svp: "AIC × SVP · Apr 15",
+  demo: "Demo Night · May 14",
+  claude: "Master Claude · Jun 2",
+  branding: "Branding with AI · Jun 16",
 } as const;
 
+type Photo = {
+  file: string;
+  alt: string;
+  shot: string;
+  event: keyof typeof photoEvents;
+  ratio: "3/2" | "2/3";
+  // Where to anchor the crop when a frame's aspect differs from the photo's.
+  position?: string;
+};
+
+// Photos live in /public/photos. If a file goes missing, a labeled placeholder
+// shows in its spot until it's back.
+export const photos = {
+  room: { file: "room.jpg", alt: "A packed room of attendees at long tables listening to a speaker", shot: "Wide shot of a packed room", event: "svp", ratio: "3/2", position: "60% 50%" },
+  workshop: { file: "workshop.jpg", alt: "Attendees with laptops open, listening during a hands-on workshop", shot: "Hands on laptops, mid-workshop", event: "claude", ratio: "3/2", position: "62% 50%" },
+  meetup: { file: "meetup.jpg", alt: "A builder points at their slide while demoing to the room", shot: "Builder demoing to the room", event: "demo", ratio: "3/2", position: "20% 50%" },
+  talk: { file: "talk.jpg", alt: "A speaker with a microphone addressing the room", shot: "Speaker at the front, full room", event: "svp", ratio: "2/3", position: "50% 25%" },
+  build: { file: "build.jpg", alt: "A group talking through an idea around a table of laptops", shot: "Small group building at a table", event: "branding", ratio: "3/2", position: "38% 50%" },
+  laughing: { file: "laughing.jpg", alt: "Two attendees laughing together", shot: "Candid laugh", event: "kickoff", ratio: "3/2" },
+  conversation: { file: "conversation.jpg", alt: "Two attendees deep in conversation, one smiling", shot: "Two people mid-conversation", event: "svp", ratio: "2/3" },
+  smiles: { file: "smiles.jpg", alt: "Two attendees smiling at the camera, one throwing a peace sign", shot: "Friends at a table", event: "claude", ratio: "3/2" },
+  building: { file: "building.jpg", alt: "Two attendees working through something on a laptop together", shot: "Building side by side", event: "demo", ratio: "3/2" },
+  pair: { file: "pair.jpg", alt: "Two attendees smiling side by side", shot: "New friends", event: "svp", ratio: "3/2" },
+  notes: { file: "notes.jpg", alt: "An attendee taking notes on a tablet during a talk", shot: "Taking notes", event: "demo", ratio: "2/3" },
+  table: { file: "table.jpg", alt: "Attendees talking around a round table", shot: "Table conversation", event: "branding", ratio: "3/2" },
+  contacts: { file: "contacts.jpg", alt: "Two attendees swapping contact info on their phones", shot: "Swapping numbers", event: "kickoff", ratio: "3/2" },
+  applause: { file: "applause.jpg", alt: "Attendees applauding a speaker", shot: "Applause", event: "svp", ratio: "3/2" },
+  laptops: { file: "laptops.jpg", alt: "Attendees working on laptops at a shared table", shot: "Laptops at a shared table", event: "claude", ratio: "2/3" },
+  audience: { file: "audience.jpg", alt: "An audience smiling during a talk", shot: "Audience smiling", event: "demo", ratio: "3/2" },
+  focus: { file: "focus.jpg", alt: "An attendee following along at a laptop", shot: "Following along", event: "claude", ratio: "3/2" },
+} satisfies Record<string, Photo>;
+
 export type PhotoKey = keyof typeof photos;
+
+// The full-bleed photo right after the scroll story: the dots were people all along.
+export const room = {
+  photo: "room" as PhotoKey,
+  title: ["Every dot", "is a person."],
+  body: "Developers next to teachers. Founders next to state workers. First-timers next to people who have been building for years. This is what it looks like when they share a room.",
+};
 
 export const gallery = {
   title: "Inside the room",
   body: "No stage-and-audience energy. People lean in, ask the question everyone else was thinking, and stay after to keep talking.",
-  shots: ["room", "conversation", "laughing", "group"] as PhotoKey[],
+  // Runs of four (one tall, three wide) so the three desktop columns balance, with the
+  // tall photo at a different height in each column so the wall doesn't read as a grid.
+  shots: ["laughing", "conversation", "smiles", "building", "notes", "pair", "table", "contacts", "applause", "audience", "focus", "laptops"] as PhotoKey[],
+  footnote: "From our first five events, March to June 2026.",
 };
 
 export const partners = {

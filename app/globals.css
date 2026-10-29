@@ -312,6 +312,21 @@ html.lenis body {
     clip-path: none;
     transition: none;
   }
+  /* The room photo shows finished and unpinned. */
+  .room-reveal {
+    height: auto;
+  }
+  .room-reveal-pin {
+    position: relative;
+  }
+  .room-reveal-frame {
+    clip-path: none !important;
+    transform: none !important;
+  }
+  .room-reveal-text {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 /* Join dialog */

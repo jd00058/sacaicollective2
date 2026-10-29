@@ -3,6 +3,7 @@ import manifest from "./generated/assets.json";
 import { getEvents } from "@/lib/luma";
 import Nav from "@/components/Nav";
 import Opening from "@/components/Opening";
+import RoomReveal from "@/components/RoomReveal";
 import Marquee from "@/components/Marquee";
 import Formats from "@/components/Formats";
 import NameTags from "@/components/NameTags";
@@ -38,6 +39,7 @@ export default async function Home() {
       <Nav />
       <main>
         <Opening />
+        <RoomReveal photos={resolvedPhotos} />
         <Marquee />
         <Formats photos={resolvedPhotos} />
         <NameTags />

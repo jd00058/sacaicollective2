@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Camera } from "lucide-react";
 
-export type ResolvedPhoto = { src: string | null; alt: string; shot: string; file: string };
+export type ResolvedPhoto = { src: string | null; alt: string; shot: string; file: string; position?: string };
 
 // Renders the real photo when one exists in /public/photos, otherwise a designed
 // placeholder that says which shot belongs there.
@@ -19,7 +19,15 @@ export default function Photo({
   if (photo.src) {
     return (
       <div className={`relative overflow-hidden bg-navy ${className}`}>
-        <Image src={photo.src} alt={photo.alt} fill sizes={sizes} priority={priority} className="object-cover" />
+        <Image
+          src={photo.src}
+          alt={photo.alt}
+          fill
+          sizes={sizes}
+          priority={priority}
+          className="object-cover"
+          style={photo.position ? { objectPosition: photo.position } : undefined}
+        />
       </div>
     );
   }
