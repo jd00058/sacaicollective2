@@ -21,7 +21,7 @@
 }
 
 @theme inline {
-  --font-display: var(--font-anton), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-boldonse), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
   --font-marker: var(--font-permanent-marker), "Comic Sans MS", cursive;
 }
@@ -80,15 +80,16 @@ p {
   padding-inline: var(--gutter);
 }
 
-/* Display type: Anton, a heavy condensed block face, always set in capitals.
+/* Display type: Boldonse, a heavy wide block face, always set in capitals.
+   Its capitals stand 1.19em tall, so lines need ~1.34 leading to clear each other.
    Layered so tracking-* and leading-* utilities can still tune it per element.
-   Anton ships one (already black) weight, so never fake-bold it. */
+   Boldonse ships one (already black) weight, so never fake-bold it. */
 @layer components {
   .font-display {
     font-synthesis: none;
     text-transform: uppercase;
-    letter-spacing: 0.005em;
-    line-height: 0.96;
+    letter-spacing: 0;
+    line-height: 1.34;
   }
 }
 

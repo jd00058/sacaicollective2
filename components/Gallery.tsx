@@ -9,7 +9,7 @@ export default function Gallery({ photos }: { photos: Record<string, ResolvedPho
     <section aria-labelledby="gallery-title" className="relative bg-ink px-gutter pb-[clamp(6rem,14vw,11rem)]">
       <div className="mx-auto max-w-[1400px]">
         <div className="grid gap-6 md:grid-cols-[1fr_1fr] md:items-end">
-          <h2 id="gallery-title" data-reveal className="font-display text-[clamp(2.8rem,7vw,5.5rem)] font-bold">
+          <h2 id="gallery-title" data-reveal className="font-display text-[clamp(2rem,5.1vw,4rem)]">
             {gallery.title}
           </h2>
           <p data-reveal style={{ "--d": "120ms" } as React.CSSProperties} className="max-w-[42ch] text-lg text-cream-2 md:justify-self-end">

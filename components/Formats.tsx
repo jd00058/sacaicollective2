@@ -16,7 +16,7 @@ export default function Formats({ photos }: { photos: Record<string, ResolvedPho
     <section id="formats" className="relative bg-ink px-gutter py-[clamp(6rem,14vw,11rem)]">
       <div className="mx-auto max-w-[1400px]">
         <div className="grid gap-8 md:grid-cols-[1fr_1fr] md:items-end">
-          <h2 data-reveal className="font-display text-[clamp(2.8rem,7vw,5.5rem)] font-bold">
+          <h2 data-reveal className="font-display text-[clamp(2rem,5.1vw,4rem)]">
             {formats.title}
           </h2>
           <p data-reveal style={{ "--d": "120ms" } as React.CSSProperties} className="max-w-[44ch] text-lg text-cream-2 md:justify-self-end">
@@ -44,7 +44,7 @@ export default function Formats({ photos }: { photos: Record<string, ResolvedPho
               className="group border-b border-cream/12"
             >
               <div className="grid gap-5 py-8 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)_auto] md:items-center md:gap-10 md:py-10">
-                <h3 className="font-display flex items-center gap-4 text-[clamp(2.2rem,5.4vw,4.4rem)] font-bold transition-[transform,color] duration-700 ease-out-expo md:group-hover:translate-x-4 md:group-hover:text-orange">
+                <h3 className="font-display flex items-center gap-4 text-[clamp(1.6rem,3.9vw,3.2rem)] transition-[transform,color] duration-700 ease-out-expo md:group-hover:translate-x-4 md:group-hover:text-orange">
                   {item.name}
                 </h3>
                 <div className="md:hidden">

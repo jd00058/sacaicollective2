@@ -1,5 +1,5 @@
-// The brand mark: a circle of seats with one open, orange seat. It's the same idea
-// the page ends on ("Pull up a chair"), shrunk down to logo size.
+// A circle of seats with one open, orange seat: the same idea the page ends on
+// ("Pull up a chair"), drawn small for the "next event is being planned" card.
 export default function SeatMark({ className = "", title }: { className?: string; title?: string }) {
   const seats = 9;
   const r = 15;

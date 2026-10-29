@@ -39,7 +39,7 @@ function Hero() {
   return (
     <section ref={ref} id="top" className="relative flex h-svh min-h-[640px] flex-col justify-end px-gutter pb-8 pt-28 md:pb-10">
       <motion.div style={{ y, opacity }} className="mx-auto w-full max-w-[1400px]">
-        <h1 className="font-display text-[clamp(2.4rem,12.2vw,6rem)] font-bold">
+        <h1 className="font-display text-[clamp(2.2rem,7.2vw,4.5rem)]">
           {hero.lines.map((line, i) => (
             <span key={line} className="hero-line">
               <span style={{ "--i": i } as React.CSSProperties} className={i === hero.lines.length - 1 ? "text-orange" : undefined}>
@@ -93,7 +93,7 @@ function Intro() {
   return (
     <section id="why" className="relative px-gutter pb-[18vh] pt-[22vh]">
       <div className="mx-auto max-w-[1400px]">
-        <p ref={ref} className="font-display max-w-[22ch] text-[clamp(2rem,4.6vw,3.9rem)] leading-[1.04]">
+        <p ref={ref} className="font-display max-w-[22ch] text-[clamp(1.3rem,3.35vw,2.85rem)] leading-[1.4]">
           {words.map((word, i) =>
             reduce ? (
               <span key={i}>{word} </span>
@@ -104,7 +104,7 @@ function Intro() {
             ),
           )}
         </p>
-        <p data-reveal className="font-display mt-10 text-[clamp(2rem,4.6vw,3.9rem)] leading-[1.04] text-orange">
+        <p data-reveal className="font-display mt-10 text-[clamp(1.3rem,3.35vw,2.85rem)] leading-[1.4] text-orange">
           {story.turn}
         </p>
       </div>
@@ -133,8 +133,8 @@ function Steps() {
           {story.steps.map((s, i) => (
             <li key={s.from}>
               <StepCounter index={i} />
-              <p className="font-display mt-6 text-[clamp(1.6rem,3.6vw,2.8rem)] font-semibold text-cream-3 line-through decoration-orange decoration-2">{s.from}</p>
-              <p className="font-display text-[clamp(3.2rem,9vw,6rem)] font-bold">{s.to}</p>
+              <p className="font-display mt-6 text-[clamp(1.2rem,2.6vw,2rem)] text-cream-3 line-through decoration-orange decoration-2">{s.from}</p>
+              <p className="font-display text-[clamp(2.3rem,6.6vw,4.4rem)]">{s.to}</p>
               <p className="mt-4 max-w-[40ch] text-lg text-cream-2">{s.body}</p>
             </li>
           ))}
@@ -199,15 +199,15 @@ function Step({
   return (
     <motion.div style={{ opacity, y: lift }} className="absolute inset-0 flex flex-col justify-center">
       <StepCounter index={index} />
-      <motion.p style={{ opacity: dim }} className="font-display relative mt-8 w-fit text-[clamp(1.8rem,4.2vw,3.25rem)] font-semibold text-cream-2">
+      <motion.p style={{ opacity: dim }} className="font-display relative mt-8 w-fit text-[clamp(1.3rem,3.1vw,2.4rem)] text-cream-2">
         {step.from}
         <motion.span
           aria-hidden
           style={{ scaleX: strike }}
-          className="absolute left-[-0.08em] right-[-0.08em] top-[54%] h-[0.09em] origin-left rounded-full bg-orange"
+          className="absolute left-[-0.08em] right-[-0.08em] top-[44%] h-[0.09em] origin-left rounded-full bg-orange"
         />
       </motion.p>
-      <p className="font-display overflow-hidden pb-[0.08em] text-[clamp(2.4rem,13.5vw,6rem)] font-bold">
+      <p className="font-display overflow-hidden pb-[0.08em] text-[clamp(1.9rem,8.6vw,4.5rem)]">
         <motion.span style={{ y: reveal }} className="inline-block">
           {step.to}
         </motion.span>

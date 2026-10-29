@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import Script from "next/script";
 import { X } from "lucide-react";
 import { JOIN_FORM_URL, LUMA_URL } from "@/app/content";
-import SeatMark from "./SeatMark";
+import LogoMark from "./LogoMark";
 
 const copy = {
   join: {
@@ -48,8 +48,8 @@ export default function JoinDialog({ intent, onClose }: { intent: "join" | "part
           <div className="relative overflow-hidden p-6 pr-16 md:p-10">
             <div aria-hidden className="pointer-events-none absolute -left-24 -top-24 size-80 rounded-full bg-blue/40 blur-[90px]" />
             <div className="relative">
-              <SeatMark className="size-10" />
-              <h2 id="join-title" className="font-display mt-8 text-[clamp(2.2rem,4vw,3.25rem)] font-bold">
+              <LogoMark className="h-11 text-orange" />
+              <h2 id="join-title" className="font-display mt-8 text-[clamp(1.6rem,2.9vw,2.4rem)]">
                 {c.title}
               </h2>
               <p className="mt-4 max-w-[38ch] text-cream-2">{c.body}</p>

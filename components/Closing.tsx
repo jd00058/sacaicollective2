@@ -64,7 +64,7 @@ export default function Closing() {
         </motion.p>
 
         <div className="absolute inset-0 grid place-items-center">
-          <h2 id="closing-title" data-reveal className="font-display text-center text-[clamp(3rem,11vw,6rem)] font-bold">
+          <h2 id="closing-title" data-reveal className="font-display text-center text-[clamp(2.2rem,8vw,4.4rem)]">
             Pull up
             <br />a chair.
           </h2>

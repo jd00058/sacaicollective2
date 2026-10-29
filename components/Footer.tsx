@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { footer, LUMA_URL, nav } from "@/app/content";
 import { useSite } from "./Providers";
-import SeatMark from "./SeatMark";
+import LogoMark from "./LogoMark";
 
 function useSacramentoTime() {
   const [time, setTime] = useState<string | null>(null);
@@ -25,7 +25,7 @@ export default function Footer() {
     <footer className="relative overflow-hidden border-t border-cream/10 bg-ink px-gutter pt-16">
       <div className="mx-auto grid max-w-[1400px] gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
-          <SeatMark className="size-9 text-cream" />
+          <LogoMark className="h-11 text-cream" />
           <p className="mt-6 max-w-[44ch] text-cream-2">{footer.line}</p>
         </div>
         <nav aria-label="Footer" className="text-sm">
@@ -73,7 +73,7 @@ export default function Footer() {
 
       <p
         aria-hidden
-        className="font-display pointer-events-none mx-auto -mb-[0.08em] max-w-[1400px] select-none text-center text-[clamp(4rem,17.5vw,16rem)] leading-[0.8] text-cream/[0.06]"
+        className="font-display pointer-events-none mx-auto -mb-[0.08em] max-w-[1400px] select-none text-center text-[clamp(2rem,10.3vw,10rem)] leading-[1] text-cream/[0.06]"
       >
         Sacramento
       </p>

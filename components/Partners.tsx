@@ -12,7 +12,7 @@ export default function Partners({ logos }: { logos: PartnerLogo[] }) {
     <section id="partners" aria-labelledby="partners-title" className="relative border-t border-cream/10 bg-ink px-gutter py-[clamp(6rem,12vw,9rem)]">
       <div className="mx-auto grid max-w-[1400px] gap-14 md:grid-cols-[1fr_1.15fr] md:gap-20">
         <div>
-          <h2 id="partners-title" data-reveal className="font-display text-[clamp(2.6rem,6vw,4.75rem)] font-bold">
+          <h2 id="partners-title" data-reveal className="font-display text-[clamp(1.9rem,4.4vw,3.5rem)]">
             {partners.title}
           </h2>
           <p data-reveal style={{ "--d": "100ms" } as React.CSSProperties} className="mt-6 max-w-[44ch] text-lg text-cream-2">

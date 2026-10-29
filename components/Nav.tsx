@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, useMotionValueEvent, useScroll, AnimatePresence } from "motion/react";
 import { nav } from "@/app/content";
 import { useSite } from "./Providers";
-import SeatMark from "./SeatMark";
+import LogoMark from "./LogoMark";
 
 export default function Nav() {
   const { openJoin } = useSite();
@@ -35,8 +35,8 @@ export default function Nav() {
           }`}
         >
           <a href="#top" className="flex items-center gap-2.5" aria-label="AI Collective Sacramento, back to top">
-            <SeatMark className="size-7 text-cream" />
-            <span className="font-display text-[1.15rem] leading-none tracking-[0.03em]">
+            <LogoMark className="h-8 text-cream" />
+            <span className="font-display text-[0.85rem] leading-[1.25] tracking-[0.02em]">
               AI Collective <span className="text-cream/65">Sacramento</span>
             </span>
           </a>
@@ -93,7 +93,7 @@ export default function Nav() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.15 + i * 0.06, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <a href={item.href} onClick={() => setMenu(false)} className="font-display block py-1 text-[clamp(2.6rem,12vw,4rem)] font-bold">
+                  <a href={item.href} onClick={() => setMenu(false)} className="font-display block py-1 text-[clamp(1.9rem,10.5vw,3rem)]">
                     {item.label}
                   </a>
                 </motion.li>

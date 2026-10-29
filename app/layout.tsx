@@ -1,10 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Anton, Geist, Permanent_Marker } from "next/font/google";
+import { Boldonse, Geist, Permanent_Marker } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/Providers";
 
-const anton = Anton({
-  variable: "--font-anton",
+const boldonse = Boldonse({
+  variable: "--font-boldonse",
   subsets: ["latin"],
   weight: "400",
   display: "swap",
@@ -51,7 +51,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${anton.variable} ${geist.variable} ${marker.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${boldonse.variable} ${geist.variable} ${marker.variable}`} suppressHydrationWarning>
       <head>
         {/* Marks JS as available before first paint so scroll reveals never hide content without it. */}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />

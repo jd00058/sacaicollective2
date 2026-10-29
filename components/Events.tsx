@@ -12,7 +12,7 @@ export default function Events({ upcoming, past }: { upcoming: LumaEvent[]; past
     <section id="events" className="relative bg-ink px-gutter py-[clamp(6rem,14vw,11rem)]">
       <div className="mx-auto max-w-[1400px]">
         <div className="grid gap-8 md:grid-cols-[1.3fr_1fr] md:items-end">
-          <h2 data-reveal className="font-display max-w-[14ch] text-[clamp(2.8rem,7vw,5.5rem)] font-bold">
+          <h2 data-reveal className="font-display max-w-[14ch] text-[clamp(2rem,5.1vw,4rem)]">
             {events.title}
           </h2>
           <div data-reveal style={{ "--d": "120ms" } as React.CSSProperties} className="md:justify-self-end">
@@ -59,7 +59,7 @@ function NextEvent({ event }: { event: LumaEvent }) {
           <p className="inline-flex items-center gap-2 text-sm font-medium text-orange">
             <span className="size-2 rounded-full bg-orange" aria-hidden /> Next event
           </p>
-          <h3 className="font-display mt-5 text-[clamp(2rem,4.4vw,3.6rem)] font-bold leading-[1]">{event.name}</h3>
+          <h3 className="font-display mt-5 text-[clamp(1.5rem,3.2vw,2.6rem)]">{event.name}</h3>
           <dl className="mt-6 space-y-2 text-cream-2">
             <div className="flex items-center gap-2.5">
               <dt className="sr-only">When</dt>
@@ -107,7 +107,7 @@ function Planning() {
           </span>
           Next event
         </p>
-        <h3 className="font-display mt-5 max-w-[16ch] text-[clamp(2.2rem,5vw,4rem)] font-bold leading-[1]">{events.emptyTitle}</h3>
+        <h3 className="font-display mt-5 max-w-[16ch] text-[clamp(1.6rem,3.6vw,2.9rem)]">{events.emptyTitle}</h3>
         <p className="mt-5 max-w-[44ch] text-lg text-cream-2">{events.emptyBody}</p>
         <div className="mt-9 flex flex-wrap gap-3">
           <a
@@ -157,7 +157,7 @@ function PastRow({ event, delay = 0, upcoming = false }: { event: LumaEvent; del
             {d.month} {d.day}
             {!upcoming && `, ${new Date(event.startAt).getFullYear()}`}
           </p>
-          <p className="font-display mt-1 text-[1.4rem] leading-[1.05] tracking-[0.02em]">{event.name}</p>
+          <p className="font-display mt-1 text-[1rem] leading-[1.35]">{event.name}</p>
           <p className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-cream-3">
             {event.place && (
               <span className="inline-flex items-center gap-1.5">
