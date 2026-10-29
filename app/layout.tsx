@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Boldonse, Geist, Permanent_Marker } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Providers from "@/components/Providers";
 
@@ -59,6 +60,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         <Providers>{children}</Providers>
         <div className="grain" aria-hidden="true" />
+        {/* GoHighLevel visitor tracking, carried over from the previous live site. */}
+        <Script
+          id="ghl-external-tracking"
+          src="https://link.msgsndr.com/js/external-tracking.js"
+          strategy="afterInteractive"
+          data-tracking-id="tk_75b9bc7b69534cbd9eecd93d444113e6"
+        />
       </body>
     </html>
   );
