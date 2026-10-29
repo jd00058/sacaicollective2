@@ -174,7 +174,15 @@ export const partners = {
   title: "Built with Sacramento.",
   body: "Venues, sponsors, speakers and partners keep these events open to everyone. If you want to help Sacramento get better at AI, there's a seat for you at this table too.",
   cta: "Partner with us",
-  slots: 6,
+  // Shown in its own card above the logo wall. The rabbit and letters are separate files so the rabbit can hop.
+  managing: {
+    role: "Official Managing Partner of",
+    name: "Sac Tech Week",
+    href: "https://sactechweek.org",
+    linkLabel: "sactechweek.org",
+  },
+  // Fills out the last row of the logo wall so it never ends in a gap.
+  openSeat: "Open seat",
 };
 
 export const closing = {

@@ -270,6 +270,66 @@ html.lenis body {
   }
 }
 
+/* Sac Tech Week managing-partner card, in STW's own tokens (from sactechweek.org):
+   void background, electric/signal violet halo behind the white rabbit. On hover the
+   halo swells and the rabbit makes one hop. */
+.stw-card {
+  --stw-void: #0b0b14;
+  --stw-electric: #6f1dff;
+  --stw-signal: #4a0fae;
+  background: var(--stw-void);
+}
+.stw-halo {
+  background: radial-gradient(
+    closest-side,
+    color-mix(in oklab, var(--stw-electric) 55%, transparent),
+    color-mix(in oklab, var(--stw-signal) 28%, transparent) 50%,
+    transparent
+  );
+  opacity: 0.75;
+  transition:
+    opacity 0.8s var(--ease-out-expo),
+    scale 1.2s var(--ease-out-expo);
+}
+.stw-card:hover .stw-halo,
+.stw-card:focus-visible .stw-halo {
+  opacity: 1;
+  scale: 1.08;
+}
+.stw-rabbit {
+  transform-origin: 35% 70%;
+}
+@keyframes stw-hop {
+  0%,
+  100% {
+    translate: 0 0;
+    rotate: 0deg;
+  }
+  38% {
+    translate: 5% -11%;
+    rotate: -5deg;
+  }
+  72% {
+    translate: 2% 0;
+    rotate: 1deg;
+  }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .stw-card:hover .stw-rabbit {
+    animation: stw-hop 0.85s var(--ease-out-quart) both;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .stw-card:focus-visible .stw-rabbit {
+    animation: stw-hop 0.85s var(--ease-out-quart) both;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stw-halo {
+    transition: none;
+  }
+}
+
 @keyframes spin-slow {
   to {
     transform: rotate(360deg);

@@ -19,7 +19,8 @@ npm run dev
   | `workshop.jpg`, `meetup.jpg`, `talk.jpg`, `build.jpg` | What we do: hover previews (desktop) and inline photos (mobile) |
   | `laughing.jpg`, `conversation.jpg`, `smiles.jpg`, `building.jpg`, `pair.jpg`, `notes.jpg`, `table.jpg`, `contacts.jpg`, `applause.jpg`, `laptops.jpg`, `audience.jpg`, `focus.jpg` | Inside the room: the masonry wall, in the order set by `gallery.shots` |
 
-- **Partner logos:** drop logo files (SVG or transparent PNG) into `public/partners/`. They're shown as white silhouettes; the file name becomes the alt text (`city-of-sacramento.svg` → "city of sacramento").
+- **Partner logos:** drop logo files (SVG or transparent PNG) into `public/partners/`. They're shown as white silhouettes, so anything that isn't transparent shows up as solid white: knock the background out first. Each logo is sized by its aspect ratio so square marks and long wordmarks carry similar weight, and "Open seat" cells top up the last row of the wall. The file name becomes the alt text (`city-of-rancho-cordova.png` → "City of Rancho Cordova").
+- **Sac Tech Week card:** the "Official Managing Partner of Sac Tech Week" card next to the partners heading. Copy is in `partners.managing` in `app/content.ts`; the logo is `public/brand/stw-rabbit.png` + `stw-letters.png` (split from STW's official white stack logo so the rabbit can hop on hover).
 
 `scripts/assets.mjs` runs before `dev` and `build` and records which photos and logos exist.
 

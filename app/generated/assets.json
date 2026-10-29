@@ -18,5 +18,56 @@
     "talk.jpg",
     "workshop.jpg"
   ],
-  "partners": []
+  "partners": [
+    {
+      "file": "all-city-homes.png",
+      "width": 218,
+      "height": 206
+    },
+    {
+      "file": "city-of-rancho-cordova.png",
+      "width": 350,
+      "height": 116
+    },
+    {
+      "file": "frequency.png",
+      "width": 283,
+      "height": 367
+    },
+    {
+      "file": "g-mark.png",
+      "width": 179,
+      "height": 153
+    },
+    {
+      "file": "morevolved.png",
+      "width": 900,
+      "height": 448
+    },
+    {
+      "file": "n8n.png",
+      "width": 562,
+      "height": 168
+    },
+    {
+      "file": "roseville-venture-lab.png",
+      "width": 900,
+      "height": 286
+    },
+    {
+      "file": "s-mark.png",
+      "width": 213,
+      "height": 230
+    },
+    {
+      "file": "sacramento-state.png",
+      "width": 441,
+      "height": 453
+    },
+    {
+      "file": "syphax-strategic.png",
+      "width": 177,
+      "height": 49
+    }
+  ]
 }
