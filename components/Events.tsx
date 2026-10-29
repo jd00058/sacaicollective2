@@ -97,7 +97,7 @@ function NextEvent({ event }: { event: LumaEvent }) {
 
 function Planning() {
   return (
-    <div data-reveal className="relative grid overflow-hidden rounded-[28px] bg-navy ring-1 ring-cream/10 md:grid-cols-[1.4fr_1fr]">
+    <div data-reveal className="seat-host relative grid overflow-hidden rounded-[28px] bg-navy ring-1 ring-cream/10 md:grid-cols-[1.4fr_1fr]">
       <div aria-hidden className="pointer-events-none absolute -bottom-1/2 -right-1/4 size-[60vmax] rounded-full bg-blue/35 blur-[110px]" />
       <div className="relative p-7 md:p-12">
         <p className="inline-flex items-center gap-2.5 text-sm font-medium text-orange">
@@ -124,7 +124,7 @@ function Planning() {
         </div>
       </div>
       <div className="relative hidden place-items-center p-12 md:grid">
-        <SeatMark className="size-[min(22vw,260px)] text-cream/85" />
+        <SeatMark className="size-[min(22vw,260px)] text-cream" />
       </div>
     </div>
   );

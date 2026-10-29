@@ -207,6 +207,69 @@ html.lenis body {
   transform-origin: center;
   animation: seat-pulse 2.4s var(--ease-out-quart) infinite;
 }
+/* Seat ring on the "being planned" card. Hovering the card makes room in the
+   circle, runs a wave of arrivals clockwise from the open seat, and when the wave
+   gets back around, the open seat grows and starts to glow. */
+.seat-ring .seat,
+.seat-ring .seat-ping {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.seat-ring .seat {
+  transition:
+    translate 0.9s var(--ease-out-expo),
+    scale 0.6s var(--ease-out-expo);
+}
+.seat-ring .seat-ping {
+  opacity: 0;
+}
+/* Chairs rest slightly dimmed so an arrival can brighten them. (Animating fill
+   from currentColor interpolates through black in Chromium, so use fill-opacity.) */
+.seat-ring .seat-chair {
+  fill-opacity: 0.85;
+}
+@keyframes seat-arrive {
+  0%,
+  100% {
+    scale: 1;
+  }
+  22% {
+    scale: 1.32;
+    fill-opacity: 1;
+  }
+}
+@keyframes seat-ping {
+  0% {
+    scale: 1;
+    opacity: 0.8;
+  }
+  70%,
+  100% {
+    scale: 2.6;
+    opacity: 0;
+  }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .seat-host:hover .seat-ring .seat {
+    translate: var(--dx) var(--dy);
+  }
+  .seat-host:hover .seat-ring .seat-chair {
+    animation: seat-arrive 0.8s var(--ease-out-quart) calc((var(--i) - 1) * 70ms) both;
+  }
+  .seat-host:hover .seat-ring .seat-open {
+    scale: 1.25;
+    transition-delay: 0s, 0.55s;
+  }
+  .seat-host:hover .seat-ring .seat-ping {
+    animation: seat-ping 2.2s var(--ease-out-quart) 0.6s infinite;
+  }
+}
+@media (hover: hover) and (prefers-reduced-motion: reduce) {
+  .seat-host:hover .seat-ring .seat-chair {
+    fill-opacity: 1;
+  }
+}
+
 @keyframes spin-slow {
   to {
     transform: rotate(360deg);
