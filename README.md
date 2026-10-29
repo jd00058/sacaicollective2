@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# sacaicollective.com
 
-## Getting Started
-
-First, run the development server:
+The homepage for AI Collective Sacramento. Next.js 16 + Tailwind 4 + Motion + Lenis, hosted on Netlify.
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Editing
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Copy:** every word on the page lives in `app/content.ts`.
+- **Events:** pulled from the Luma calendar (luma.com/sacaic) and refreshed every 30 minutes. Post an event on Luma and it appears on the site. With nothing upcoming, the section shows a "next one is being planned" card.
+- **Photos:** drop JPGs into `public/photos/` using these names, then rebuild. Until a file exists, a labeled placeholder shows in its spot.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+  | File | Where it shows | Ideal shot |
+  | --- | --- | --- |
+  | `workshop.jpg` | What we do: Workshops | Hands on laptops, mid-workshop |
+  | `meetup.jpg` | What we do: Builder meetups | A builder demoing to the room |
+  | `talk.jpg` | What we do: Talks & panels | Speaker at the front, full room |
+  | `build.jpg` | What we do: Build days | Small group building at a table |
+  | `room.jpg` | Inside the room (large) | Wide shot of a packed room |
+  | `conversation.jpg` | Inside the room | Two people mid-conversation |
+  | `laughing.jpg` | Inside the room | Candid laugh during a session |
+  | `group.jpg` | Inside the room (wide) | Group photo at the end of the night |
 
-## Learn More
+- **Partner logos:** drop logo files (SVG or transparent PNG) into `public/partners/`. They're shown as white silhouettes; the file name becomes the alt text (`city-of-sacramento.svg` → "city of sacramento").
 
-To learn more about Next.js, take a look at the following resources:
+`scripts/assets.mjs` runs before `dev` and `build` and records which photos and logos exist.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Design context
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`PRODUCT.md` holds the audience, voice and design principles. The brand source of truth is `../AIC/ai_collective_sacramento_brand_context.md`.

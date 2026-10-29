@@ -1,24 +1,38 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Bricolage_Grotesque, Geist, Permanent_Marker } from "next/font/google";
 import "./globals.css";
+import Providers from "@/components/Providers";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const bricolage = Bricolage_Grotesque({
+  variable: "--font-bricolage",
   subsets: ["latin"],
+  axes: ["opsz", "wdth"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const geist = Geist({
+  variable: "--font-geist",
   subsets: ["latin"],
+  display: "swap",
 });
+
+const marker = Permanent_Marker({
+  variable: "--font-permanent-marker",
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+});
+
+const description =
+  "AI is moving too fast to figure out alone. AI Collective Sacramento is a local community where curious people learn, build and connect around AI. Workshops, builder meetups and talks across the Sacramento region.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://sacaicollective.com'),
-  title: "AI Collective Sacramento | Shape the future of AI",
-  description: "Join a community of builders, researchers, and enthusiasts. We are democratizing AI knowledge, fostering collaboration, and building a thriving local ecosystem for innovation in Sacramento.",
+  metadataBase: new URL("https://sacaicollective.com"),
+  title: "AI Collective Sacramento | Learn, build and connect around AI",
+  description,
   openGraph: {
     title: "AI Collective Sacramento",
-    description: "Shape the future of AI in Sacramento and surrounding areas. Join the collective.",
+    description: "AI is moving fast. Don't figure it out alone. Join Sacramento's community for learning, building and connecting around AI.",
     url: "https://sacaicollective.com",
     siteName: "AI Collective Sacramento",
     locale: "en_US",
@@ -27,21 +41,24 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "AI Collective Sacramento",
-    description: "Shape the future of AI in Sacramento and surrounding areas.",
+    description: "AI is moving fast. Don't figure it out alone.",
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export const viewport: Viewport = {
+  themeColor: "#07060C",
+};
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html lang="en" className={`${bricolage.variable} ${geist.variable} ${marker.variable}`} suppressHydrationWarning>
+      <head>
+        {/* Marks JS as available before first paint so scroll reveals never hide content without it. */}
+        <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />
+      </head>
+      <body>
+        <Providers>{children}</Providers>
+        <div className="grain" aria-hidden="true" />
       </body>
     </html>
   );
