@@ -136,7 +136,7 @@ export const photos = {
   room: { file: "room.jpg", alt: "A packed room of attendees at long tables listening to a speaker", shot: "Wide shot of a packed room", event: "svp", ratio: "3/2", position: "60% 50%" },
   workshop: { file: "workshop.jpg", alt: "Attendees with laptops open, listening during a hands-on workshop", shot: "Hands on laptops, mid-workshop", event: "claude", ratio: "3/2", position: "62% 50%" },
   meetup: { file: "meetup.jpg", alt: "A builder points at their slide while demoing to the room", shot: "Builder demoing to the room", event: "demo", ratio: "3/2", position: "20% 50%" },
-  talk: { file: "talk.jpg", alt: "A speaker with a microphone addressing the room", shot: "Speaker at the front, full room", event: "svp", ratio: "2/3", position: "50% 25%" },
+  talk: { file: "talk.jpg", alt: "A speaker at a microphone explaining an idea with both hands, his laptop open beside him", shot: "Speaker mid-talk at the mic", event: "claude", ratio: "3/2", position: "52% 50%" },
   build: { file: "build.jpg", alt: "A group talking through an idea around a table of laptops", shot: "Small group building at a table", event: "branding", ratio: "3/2", position: "38% 50%" },
   laughing: { file: "laughing.jpg", alt: "Two attendees laughing together", shot: "Candid laugh", event: "kickoff", ratio: "3/2" },
   conversation: { file: "conversation.jpg", alt: "Two attendees deep in conversation, one smiling", shot: "Two people mid-conversation", event: "svp", ratio: "2/3" },
